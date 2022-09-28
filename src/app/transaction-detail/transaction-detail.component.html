@@ -1,0 +1,42 @@
+<div *ngIf="transaction" class="row">
+    <div class="col s12 m8 offset-m2">
+    <h2 class="header center">{{ transaction.label.name }}</h2>
+    <div class="card horizontal hoverable">
+      
+      <div class="card-stacked">
+        <div class="card-content">
+          <table class="bordered striped">
+            <tbody>
+              <tr>
+                <td>Libéllé</td>
+                <td><strong>{{ transaction.label.name }}</strong></td>
+              </tr>
+              <tr>
+                <td>Amount</td>
+                <td><strong>{{ transaction.amount }}</strong></td>
+              </tr>
+              <tr>
+                <td *ngIf="(transaction.creditor)">Creditor</td>
+                <td *ngIf="(transaction.creditor)"><strong>{{ transaction.creditor }}</strong></td>
+              </tr>
+              <tr>
+                <td *ngIf="(transaction.debitor)">Debitor</td>
+                <td *ngIf="(transaction.debitor)">{{transaction.debitor}}</td>
+              </tr>
+              <tr>
+                <td>Date</td>
+                <td><em>{{ transaction.date | date:"dd/MM/yyyy" }}</em></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card-action">
+          <a (click)="goBack()">Retour</a>
+          <a (click)="goToEdit(transaction)">Edit</a>
+          <a (click)="goDelete(transaction.id)">Delete</a>
+        </div>
+      </div>
+    </div>
+    </div>
+    </div>
+    <h4 *ngIf='!transaction' class="center">Aucune transaction à afficher !</h4>

@@ -1,0 +1,4 @@
+<h1 class="text-center"> Editer la transaction n° {{transaction?.id}} </h1>
+
+<h3 class="center" *ngIf="transaction">{{transaction.amount}}<strong> EUR</strong></h3>
+<app-transaction-form *ngIf="transaction" [transaction]="transaction"></app-transaction-form>
